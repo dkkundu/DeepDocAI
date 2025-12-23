@@ -12,50 +12,18 @@ A FastAPI application that uses local Ollama to summarize documents (PDF, DOCX, 
 
 ## Prerequisites
 
-### Option 1: Docker (Recommended)
-- **Docker** and **Docker Compose** installed
-- No need to install Ollama or Python separately
-
-### Option 2: Local Installation
 1. **Ollama installed and running locally**
    - Download from: https://ollama.ai
    - Install and start the Ollama service
-   - Pull a model (e.g., `ollama pull llama2`)
+   - Pull a model (e.g., `ollama pull deepseek-r1`)
 
 2. **Python 3.8+**
 
 ## Installation
 
-### Docker Compose (Recommended)
-
-1. Navigate to the project directory:
-```bash
-cd /mnt/backup/Local_LM
-```
-
-2. Start the services:
-```bash
-docker-compose up -d
-```
-
-3. Pull an Ollama model (first time only):
-```bash
-docker exec -it ollama ollama pull llama2
-```
-
-The API will be available at `http://localhost:8000`
-
-**Useful commands:**
-- View logs: `docker-compose logs -f`
-- Stop services: `docker-compose down`
-- Rebuild: `docker-compose up -d --build`
-- Access Ollama shell: `docker exec -it ollama ollama list`
-
-### Local Installation
-
 1. Clone or navigate to this directory:
 ```bash
-cd /mnt/backup/Local_LM
+cd /mnt/backup/project/DeepDocAI
 ```
 
 2. Create a virtual environment (recommended):
@@ -106,10 +74,6 @@ export OLLAMA_MODEL="deepseek-r1"  # Default model name
 
 ## Running the Application
 
-### Docker Compose
-If using Docker Compose, the application is already running after `docker-compose up -d`.
-
-### Local Installation
 Start the FastAPI server:
 
 ```bash
@@ -174,13 +138,10 @@ Once the server is running, visit:
 ## Project Structure
 
 ```
-Local_LM/
+DeepDocAI/
 ├── main.py              # FastAPI application
 ├── document_parser.py   # Document parsing logic
 ├── requirements.txt     # Python dependencies
-├── Dockerfile          # Docker image definition
-├── docker-compose.yml  # Docker Compose configuration
-├── .dockerignore       # Docker ignore file
 ├── .env.example        # Example environment variables file
 ├── example_client.py   # Example Python client script
 ├── API_EXAMPLES.md     # Detailed API usage examples
