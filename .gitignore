@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Uploads
+uploads/
+*.pdf
+*.docx
+*.doc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Exclude other projects/folders - only track this project
+n8n/
+jupyter_notebook/
+Audio/
+CV/
+Calan/
+DK/
+Docker_file/
+HIND/
+ILTES/
+JOMI/
+ML/
+Office/
+Tutoial/
+Video_Project/
+dada_report/
+design/
+docker_services/
+kubernetes/
+project/
+server/
+stock_exchenges/
+system/
+test/
+mmmm/
+New audio/
+Poland Student Visa Application Full Process A to Z _ How To Apply For Student Visa 2024-20240726T094402Z-001/
+Poland Student Visa Application Full Process A to Z _ How To Apply For Student Visa 2024-20240726T094402Z-001.zip
+N8n-copy/
+N8n-copy.zip
+*.iso
+*.tar
+*.zip
+*.jpg
+*.png
+*.pem
+*.pdf
+wget-log
+.pnpm-store/
+.python-version
+github-recovery-codes.txt
+Untitled
+main.py
+Local_LM/
+
