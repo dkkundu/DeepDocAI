@@ -1,45 +1,17 @@
 version: '3.8'
 
 services:
-  ollama:
-    image: ollama/ollama:latest
-    container_name: ollama
-    volumes:
-      - ollama_data:/root/.ollama
-    ports:
-      - "11434:11434"
-    restart: unless-stopped
-    networks:
-      - local_lm_network
-
   fastapi:
     build: .
     container_name: document-summarizer
     ports:
       - "8000:8000"
     environment:
-      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
       - OLLAMA_MODEL=llama2
     volumes:
       - ./uploads:/app/uploads
-    depends_on:
-      - ollama
     restart: unless-stopped
-    networks:
-      - local_lm_network
-    # Wait for Ollama to be ready
-    healthcheck:
-      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://ollama:11434/api/tags', timeout=5)"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
-
-volumes:
-  ollama_data:
-    driver: local
-
-networks:
-  local_lm_network:
-    driver: bridge
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 

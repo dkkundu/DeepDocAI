@@ -73,12 +73,36 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Set environment variables (optional):
+The application can be configured using environment variables. You can set them in two ways:
+
+### Option 1: Using a .env file (Recommended)
+
+1. Copy the example environment file:
+```bash
+cp .env.example .env
+```
+
+2. Edit `.env` and set your configuration:
+```bash
+# Ollama Configuration
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=deepseek-r1
+```
+
+**Note:** If Ollama is running on a different server, update `OLLAMA_BASE_URL` accordingly (e.g., `http://192.168.1.100:11434`).
+
+### Option 2: Using environment variables
+
+Set environment variables directly:
 
 ```bash
 export OLLAMA_BASE_URL="http://localhost:11434"  # Default
-export OLLAMA_MODEL="llama2"  # Default model name
+export OLLAMA_MODEL="deepseek-r1"  # Default model name
 ```
+
+**Default values:**
+- `OLLAMA_BASE_URL`: `http://localhost:11434`
+- `OLLAMA_MODEL`: `deepseek-r1`
 
 ## Running the Application
 
@@ -157,6 +181,7 @@ Local_LM/
 ├── Dockerfile          # Docker image definition
 ├── docker-compose.yml  # Docker Compose configuration
 ├── .dockerignore       # Docker ignore file
+├── .env.example        # Example environment variables file
 ├── example_client.py   # Example Python client script
 ├── API_EXAMPLES.md     # Detailed API usage examples
 ├── README.md           # This file
