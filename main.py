@@ -94,7 +94,7 @@ async def summarize_document(
     Parameters:
     - file: The document file to summarize
     - model: Optional Ollama model name (defaults to OLLAMA_MODEL env var or 'llama2')
-    - max_length: Optional maximum summary length in words
+    - max_length: Optional maximum summary length in words (use -1, 0, or omit for unlimited)
     """
     # Validate file type
     file_ext = Path(file.filename).suffix.lower()
@@ -131,9 +131,12 @@ async def summarize_document(
                 detail=f"Failed to parse document: {str(e)}"
             )
         
+        # Normalize max_length: treat -1, 0, and None as unlimited
+        normalized_max_length = None if (max_length is None or max_length <= 0) else max_length
+        
         # Generate summary using Ollama
         try:
-            summary = await generate_summary(text_content, model_name, max_length)
+            summary = await generate_summary(text_content, model_name, normalized_max_length)
         except Exception as e:
             logger.error(f"Summary generation error: {e}")
             raise HTTPException(
